@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faMapLocation } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons'
+import boot from "../assets/svgs/boot.svg"
 
 const BootcampsList = () => {
   const [bootcamps, setBootcamps] = useState([]);
+
 
   useEffect(() => {
     axios
@@ -16,30 +23,60 @@ const BootcampsList = () => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center">
+    <section>
+       <h1 className='prose text-5xl text-center text-blue-900 font-serif font-extrabold  mt-10 tracking-wider leading-tight'>Best Bootcamps in Kenya</h1>
+    <div className='grid grid-cols-12 gap-4 '>
+      <div className=' col-start-2 col-span-7'>
+       
+        <p className='text-xl text-blue-950 font-bold p-10 mt-10 tracking-wider leading-tight'> Coding bootcamps in Kenya are highly competitive and offer intensive training programs that equip students with the skills needed to break into the technology sector. Tech Mentor is here to help you choose your ideal bootcamp and kickstart your career in tech!</p>
+      </div>
+      <div className='col-span-3  '>
+        <img src={boot} alt="bootcamp" />
+      </div>
+    </div>  
+    <div className="grid grid-cols-3 mt-20 gap-4 ml-20 mr-20 relative">
+      
       {bootcamps.map((bootcamp) => (
-        <div key={bootcamp.id} className="max-w-md mx-4 my-8 bg-white rounded-lg shadow-lg overflow-hidden">
-          <img className="w-full h-56 object-cover" src={bootcamp.image} alt={bootcamp.name} />
-          <div className="p-4">
-            <h2 className="text-xl font-bold mb-2">{bootcamp.name}</h2>
-            <p className="text-gray-700 text-base">{bootcamp.description}</p>
-            <ul className="my-4">
+        <div key={bootcamp.id} className="  bg-blue-9 max-w-md p-x-7 mx-4 my-8 bg-white rounded-xl shadow-xl overflow-hidden">
+          <div className='bg-blue-900 h-12 '>
+            {/* <h1 className='ml-8 text-white text-2xl '># {bootcamp.id} </h1> */}
+          </div>
+          <img className="w-32 z-20 ml-28 absolute bg-slate-900 border-spacing-7 border -top-3   h-32 object-cover" src={bootcamp.image} alt={bootcamp.name} />
+          <div className="p-4 mt-8">
+            <h2 className="text-xl  font-bold mb-2 text-center text-blue-950">{bootcamp.name}</h2>
+            <p className="text-blue-900 font-sans prose line-clamp-6 text-base">{bootcamp.description}</p>
+
+            <div className='flex justify-around mt-4 bg-blue-50 rounded-md p-2 font-semibold text-blue-950'>
+              <p className=" text-sm border-r-2 pr-2 border-blue-950">
+                <FontAwesomeIcon icon={faMapLocation} className="mr-2"/>
+                {bootcamp.location}
+              </p>
+              <p className="  text-sm border-r-2 pr-2 border-blue-950">
+                  {/* mode: <FontAwesomeIcon icon={faLaptop} /> */}
+                  {bootcamp.learning_mode}
+              </p>
+              <p className="text-yellow-400 text-sm">
+                {Array.from(Array(Math.floor(bootcamp.stars)).keys()).map((i) => (
+                  <FontAwesomeIcon key={i} icon={faStar} />
+                ))}
+                {bootcamp.stars % 1 !== 0 && (
+                  <FontAwesomeIcon icon={faStarHalfAlt} />
+                )}
+               <span className='text-blue-800 ml-2'>{bootcamp.stars}/5</span> 
+              </p>
+            </div>
+
+            <ul className="my-4 bg-blue-50 p-4 rounded-xl ">
+              <h1 className='text-blue-800 text-xl text-center mb-4'>courses</h1>
               {bootcamp.courses.map((course, index) => (
                 <li key={index} className="mb-2">
-                  <i className="far fa-check-circle mr-2 text-green-500"></i>
+                 <FontAwesomeIcon icon={faCheckCircle} className="text-blue-800 mr-3"/>
                   {course}
                 </li>
               ))}
             </ul>
-            <p className="text-gray-700 text-sm">
-              <i className="fas fa-map-marker-alt mr-2"></i>
-              {bootcamp.location}
-            </p>
-            <p className="text-gray-700 text-sm">
-              <i className="fas fa-laptop mr-2"></i>
-              {bootcamp.learningMode}
-            </p>
-            <div className="mt-4">
+          
+            {/* <div className="mt-4">
               <a
                 href={bootcamp.website}
                 target="_blank"
@@ -48,11 +85,12 @@ const BootcampsList = () => {
               >
                 Visit Website
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       ))}
     </div>
+  </section>
   );
 };
 
