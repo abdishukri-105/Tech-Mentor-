@@ -4,7 +4,7 @@ const Navbar = () => {
 
 return ( 
           
-    <nav className="bg-white border-b-2 border  flex items-center justify-around flex-wrap p-4 ">
+    <nav className="bg-white border-b-2 border  flex items-center justify-around flex-wrap p-4   w-full z-10 top-0">
         <div className="flex items-center flex-shrink-0  mr-6">
           <Link to="/"className="text-blue-800 text-2xl font-bold text-blue-500 tracking-tight">Tech Mentor</Link>
         </div>
