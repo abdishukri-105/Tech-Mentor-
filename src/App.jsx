@@ -1,9 +1,16 @@
-
+import LandingPage from "./components/LandingPage"
+import { Routes , Route, useNavigate} from 'react-router-dom'
+import Navbar from "./components/Navbar"
+import BootcampsList from "./components/BootcampsList"
 function App() {
   
   return (
     <div className="App">
-      <h1 className="text-3xl bg-slate-400"> Tech Mentor</h1>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<LandingPage/>}/>
+        <Route path='/bootcampslist' element={<BootcampsList />}/>
+      </Routes>
     </div>
   )
 }
