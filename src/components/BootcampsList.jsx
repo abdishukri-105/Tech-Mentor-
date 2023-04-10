@@ -53,7 +53,6 @@ const BootcampsList = () => {
                    Mode: 
                    <span className='text-gray-500 ml-1'>{bootcamp.learning_mode}</span> 
               </p>
-            
             </div>
 
             <ul className="my-4 bg-blue-50 p-2 rounded-xl ">
@@ -81,8 +80,7 @@ const BootcampsList = () => {
                <FontAwesomeIcon icon={faComment} className="mr-2"/>
                   <span className='underline cursor-pointer'>Reviews </span> 
               </p>
-
-              </div>
+            </div>
           
             {/* <div className="mt-4">
               <a

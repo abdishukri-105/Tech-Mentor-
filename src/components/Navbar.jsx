@@ -11,6 +11,7 @@ return (
         <div className="flex items-center flex-shrink-0 text-blue-700  justify-center text-xl font-bold">
             <Link to="/"  exact className=" ml-5 ">Home</Link>
             <Link to="/bootcampslist"  exact className="ml-5">bootcamps</Link>
+            <Link to="/courses" exact className="ml-5">Courses</Link>
             {/* <Link to="/createarticle"  exact className="ml-5"> create Articles</Link>
             <Link  onClick={handleLogout} to="/logout" exact className="ml-5">Logout</Link>
             <Link to="/login" className="ml-8">Login</Link>
